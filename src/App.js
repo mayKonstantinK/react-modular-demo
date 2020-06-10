@@ -14,6 +14,9 @@ import TopnavDarkSwitch from "layouts/Navs/Topnav.DarkSwitch";
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
 
+import { createApp } from 'frint';
+import { render } from 'frint-react';
+
 const initialState = {};
 const store = configureStore(initialState, history);
 const MOUNT_NODE = document.getElementById("root");
@@ -52,6 +55,25 @@ const MainApp = () => {
   );
 };
 
-ReactDOM.render(<MainApp />, MOUNT_NODE);
+const RootApp = createApp({
+  name: 'MainApp',
+  providers: [
+    {
+      name: 'component',
+      useValue: MainApp
+    },
+    {
+      name: 'store',
+      useFactory() {
+        return store;
+      },
+    },
+  ]
+});
+
+window.app = new RootApp();
+render(window.app, document.getElementById('root'));
+
+// ReactDOM.render(<MainApp />, MOUNT_NODE);
 
 serviceWorker.unregister();

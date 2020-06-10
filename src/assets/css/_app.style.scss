@@ -149,3 +149,29 @@ a {
     border-color: darken($theme-color-1, 8%);
   }
 }
+
+.Container {
+  text-align: center;
+  padding: 20px;
+  font-size: 20px;
+  border: 2px solid red;
+}
+
+.Counter {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+
+  .btn {
+    width: 40px;
+    outline: none;
+  }
+  .value {
+    border: 1px solid;
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 40px;
+    text-align: center;
+    font-size: 25px;
+  }
+}
